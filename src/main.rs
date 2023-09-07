@@ -17,7 +17,10 @@ fn main() {
             .expect("讀取該行輸入失敗");
     
     
-        let guess:u32 = guess.trim().parse().expect("請輸入你猜的數字：");
+        let guess:u32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue,
+        };
     
         println!("你猜的數字：{guess}");
     
